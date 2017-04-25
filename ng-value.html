@@ -1,0 +1,42 @@
+<html ng-app="MyApp">
+    <head>
+    <style> 
+        body{
+            padding:100px;
+            }
+        
+    </style>
+        <script
+           src="https://code.jquery.com/jquery-3.1.1.js"
+               integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+               crossorigin="anonymous"></script>
+               <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    </head>
+
+    <body class="container" ng-controller="Controller1"><br/>
+        
+        <input type="radio" id="red" ng-model="favcolor" name="color"> Red <br/>
+        <input type="radio" id="blue" ng-model="favcolor" name="color"> Blue <br/>
+        <input type="radio" id="green" ng-model="favcolor" name="color"> Green <br/>
+        <input type="radio" id="yellow" ng-model="favcolor" name="color"> Yellow <br/>
+        <br/> <br/>
+        
+        <label ng-repeat="name in names" >
+        <input type="radio" ng-model="fav. color" ng-value="name" id="{{name}}" name="favcolor">{{name}} 
+        </label> <br/>
+        {{fav.color}}
+        
+               
+    <script>
+        var myApp=angular.module("MyApp",[]);
+
+        myApp.controller("Controller1",function($scope){
+            $scope.names=["Red","Blue","Green","Yellow"];
+            $scope.fav={color:"Blue"}
+         
+        })
+    
+    </script>
+    </body>
+</html>

@@ -1,0 +1,51 @@
+<html ng-app="MyApp">
+    <head>
+    <style> 
+        body{
+            padding:100px;
+            }
+        
+    </style>
+        <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="crossorigin="anonymous">
+        </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    </head>
+
+    <body class="container" ng-controller="Controller1"><br/>
+        
+        <ul>
+        <li ng-repeat="customer in customers">
+           ({{$index+1}}) {{customer.fname}},{{customer.lname}} is aged {{customer.age}} {{$even}}
+        </li>        
+        
+        </ul>
+        
+        <select ng-model="countrySelected" ng-options=country in countries>
+        <option value=""> </option>
+         
+        </select>
+        
+        <button type="button" class="btn-btn-info" ng-click="disable()"> Push object to array </button>
+        
+    <script>
+        var myApp=angular.module("MyApp",[]);
+        myApp.controller("Controller1",function($scope){ 
+                $scope.countryList=[
+                    {name:"India",type="IN"},
+                    {name:"USA",type="US"},
+                    {name:"United Kingdom",type="UK"}
+                ]
+               
+                $scope.customers=[{fname:"Jim",lname:"powers",age:35}, 
+                                 {fname:"Jane",lname:"Johny",age:43},
+                                 {fname:"David",lname:"walker",age:23},
+                                 {fname:"Perry",lname:"simpson",age:45}]
+                
+               $scope.disable=function(){
+                   $scope.customers.push({fname:"Perry",lname:"simpson",age:45})
+               }
+        })
+    
+    </script>
+    </body>
+</html>

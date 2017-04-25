@@ -1,0 +1,77 @@
+<html ng-app="MyApp">
+    <head>
+    <style> 
+        body{
+            padding:100px;
+            
+        }
+        
+    </style>
+    
+        <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+                crossorigin="anonymous">
+        </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+       <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    </head>
+    
+    <body class="container" >
+        
+        <div ng-controller="Controller1">
+        <input type="text" ng-model="productId" ng-change="changed()">
+         <br/> Show Value<strong>{{changedValue}}</strong>
+        </div>
+        
+        <br/>
+        
+        <div ng-controller="Controller2"> 
+        <button type="button" class="btn-btn-info" ng-click="counter=counter+1">Click here to increment a counter</button>
+        <br/>
+        
+        The button has been clicked <strong>{{counter}}</strong> times <br/>
+        The button has been clicked <strong ng-bind="counter"></strong> times <br/><br/>
+        </div>
+        
+        <div ng-controller="Controller3">
+        <input type="text" ng-model="first_name" ng-disabled="isDisabled"> <br/>
+        <button type="button" class="btn-btn-info" ng-click="disable()"> Disable Text Box</button>
+        </div>
+        
+        <br/>
+        <script>
+        var myApp=angular.module("MyApp",[]);
+            
+            myApp.controller("Controller1",function($scope){ 
+                
+                $scope.presentValue="";
+                $scope.changed=function(){
+                    console.log("changed Function executes:"+$scope.productId);
+                    $scope.changedValue=$scope.productId+"value changed"
+                }
+                
+            })
+            myApp.controller("Controller2",function($scope){
+                
+                $scope.counter=0;
+                $scope.clicked=function(){
+                    $scope.counter+=1
+                }
+            })
+            
+            myApp.controller("Controller3",function($scope){ 
+                
+                $scope.first_name="John";
+                $scope.isDisabled="false"
+                $scope.disable=function(){
+                    $scope.isDisabled=!$scope.isDisabled;
+            }
+                
+            })
+        
+        
+        </script>
+    
+    
+    
+    
+    </body>
